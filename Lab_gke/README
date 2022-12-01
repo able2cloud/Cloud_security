@@ -1,12 +1,22 @@
-STEP 1
+#Opcional
+#STEP 1 Local
 
 Pré-req install  gcloud and kubernetes
 
 https://cloud.google.com/sdk/docs/install-sdk#windows
 
-https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/ 
+
+
+# caminho mais simples usar cloud shell editor console gcp.
+
+
+
+
+
+
 #######################
-#STEP 2 configurar gcloud 
+#STEP 2 configurar gcloud  só local PELO CLOUD SHELL Seguir para o passo 3
 
 gcloud auth list
 
@@ -33,22 +43,19 @@ gcloud config set account email
 
 #Criando cluster
 
-gcloud container clusters create-auto hello-cluster \
-    --region=us-west2
+gcloud container clusters create-auto aula4-cluster --region=us-west2
     
 #    Pegando as credencias do cluster
     
-    gcloud container clusters get-credentials hello-cluster \
-    --region us-west2
+    gcloud container clusters get-credentials aula4-cluster  --region us-west2
     
 #    Criando uma aplicação no cluster
     
-    kubectl create deployment hello-server \
-    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+    kubectl create deployment aula4-server  --image=us-docker.pkg.dev/google-samples/containers/gke/aula4-app:1.0
 
 #expondo a porta do serviço do cluster
 
-kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
+kubectl expose deployment aula4-server --type LoadBalancer --port 80 --target-port 8080
 
 #Listando o serviço
 
@@ -56,9 +63,9 @@ kubectl get pods
 
 
 #Listando o service
-kubectl get service hello-server
+kubectl get service aula4-server
 
 
 #Destruindo o cluster
-gcloud container clusters delete hello-cluster \
+gcloud container clusters delete aula4-cluster \
     --region us-west2
