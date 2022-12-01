@@ -7,6 +7,11 @@ https://cloud.google.com/sdk/docs/install-sdk#windows
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/ 
 
+#STEP 1 console shell
+# na console APIs & Services --> Enable APis & services
+
+# Enable Container Registry API
+# Kubernetes Engine API
 
 # caminho mais simples usar cloud shell editor console gcp.
 
