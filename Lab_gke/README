@@ -1,0 +1,50 @@
+Pré-req install  gcloud and kubernetes
+
+https://cloud.google.com/sdk/docs/install-sdk#windows
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+
+
+gcloud auth list
+
+gcloud config configurations create labs
+
+gcloud config set project xxxx
+
+#olhar no no gcp o id
+
+gcloud config set account email
+
+
+
+Criando cluster
+
+gcloud container clusters create-auto hello-cluster \
+    --region=us-west2
+    
+    pegando as credencias do cluster
+    
+    gcloud container clusters get-credentials hello-cluster \
+    --region us-west2
+    
+    criando uma aplicação no cluster
+    
+    kubectl create deployment hello-server \
+    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+
+expondo a porta do serviço do cluster
+
+kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
+
+listando o serviço
+
+kubectl get pods
+
+
+listando o service
+kubectl get service hello-server
+
+
+destruindo o cluster
+gcloud container clusters delete hello-cluster \
+    --region us-west2
