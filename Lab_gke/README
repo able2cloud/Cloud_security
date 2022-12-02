@@ -53,10 +53,14 @@ gcloud container clusters create-auto aula4-cluster --region=us-west2
 #    Pegando as credencias do cluster
     
     gcloud container clusters get-credentials aula4-cluster  --region us-west2
+
+# Criando namespace
+kubectl create ns aula4
     
 #    Criando uma aplicação no cluster
     
-    kubectl create deployment aula4-server  --image=us-docker.pkg.dev/google-samples/containers/gke/aula4-app:1.0
+kubectl create deployment hello-server \
+    --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0 -n aula4
 
 #expondo a porta do serviço do cluster
 
